@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 min-h-screen">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favourites</title>
+  <link href="/output.css" rel="stylesheet" />
+</head>
+
+<body class="font-sans text-gray-900">
+
+  <!-- ✅ NAVBAR -->
+  <nav class="bg-white shadow-md mb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex-shrink-0">
+          <a href="/" class="text-2xl font-bold text-orange-600 hover:text-orange-700 transition">
+            AirbnbClone
+          </a>
+        </div>
+        <div class="flex space-x-6">
+          <a href="/host/add-home" class="text-gray-700 hover:text-orange-600 font-medium transition">➕ Add Home</a>
+          <a href="/bookings" class="text-gray-700 hover:text-orange-600 font-medium transition">📑 Bookings</a>
+          <a href="/favourite-list" class="text-orange-600 font-semibold transition">❤️ Favourite List</a>
+          <a href="/reserve" class="text-gray-700 hover:text-orange-600 font-medium transition">📅 Reserve</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold text-orange-700 mb-6 text-center">Your Favourite Homes</h1>
+
+    <% if (favourites.length===0) { %>
+      <p class="text-center text-gray-500">You have no favourites yet.</p>
+      <% } else { %>
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <% favourites.forEach(home=> { %>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+              <img src="<%= home.photo || 'https://via.placeholder.com/400x200?text=No+Image'%>" alt="<%= home.housename %>" class="w-full h-48 object-cover">
+              <div class="p-4 space-y-2">
+                <h2 class="text-xl font-bold text-orange-700">
+                  <%= home.housename %>
+                </h2>
+                <p class="text-gray-600">📍 <%= home.location %>
+                </p>
+                <p class="text-gray-800 font-medium">💵 ₹<%= home.price %> / night</p>
+                <p class="text-yellow-500">⭐ <%= home.rating %> / 5</p>
+                <a href="/home-detail/<%= home.id %>"
+                  class="block w-full text-center bg-white border-2 border-orange-500 text-orange-600 font-semibold py-2 px-4 rounded-lg hover:bg-orange-100 transition duration-300">
+                  🏠 Home Details
+                </a>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+        <% } %>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1"
+  },
+  {
+    "id": "3"
+  },
+  {
+    "housename": "ashay house",
+    "location": "",
+    "price": "",
+    "rating": "",
+    "photo": "",
+    "id": [
+      "3"
+    ]
+  },
+  {
+    "housename": "aashay house",
+    "location": "",
+    "price": "",
+    "rating": "",
+    "photo": "",
+    "id": [
+      "1748801551506"
+    ]
+  },
+  {
+    "housename": "jayshankar house",
+    "location": "",
+    "price": "",
+    "rating": "",
+    "photo": "",
+    "id": [
+      "4" 
+    ]
+  },
+  {
+    "housename": "aaaaa",
+    "location": "",
+    "price": "",
+    "rating": "",
+    "photo": "",
+    "id": "1748866763542"
+  },
+  {
+    "housename": "aashay house",
+    "location": "",
+    "price": "",
+    "rating": "",
+    "photo": "",
+    "id": "1748801551506"
+  }
+]
