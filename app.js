@@ -11,7 +11,8 @@ const { mongoconnect } = require('./utils/databaseutil');
 const { default: mongoose } = require('mongoose');
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session);
-const dbpath = "mongodb+srv://root:root@ascluster0.cf4tyg3.mongodb.net/airbnb?retryWrites=true&w=majority&appName=ASCluster0"
+const dbpath = "mongodb+srv://root:root@ascluster0.cf4tyg3.mongodb.net/airbnb?retryWrites=true&w=majority&tls=true&appName=ASCluster0"
+
 const multer = require('multer')
 
 
@@ -126,18 +127,24 @@ app.use((req, res, next) => {
 })
 
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 // mongoconnect(()=>{
 //     app.listen(port,()=>{
 //     console.log(`Server is running on port ${port}`);
 // })
 // })
 
-mongoose.connect(dbpath).then(() => {
-    console.log("connected to mongo")
+mongoose.connect(dbpath, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    tlsAllowInvalidCertificates: false, // important for TLS handshake
+})
+.then(() => {
+    console.log("Connected to MongoDB");
     app.listen(port, '0.0.0.0', () => {
         console.log(`Server is running on port ${port}`);
-    })
-}).catch((err) => {
-    console.log("error while connecting", err)
+    });
 })
+.catch((err) => {
+    console.error("Error while connecting to MongoDB:", err);
+});
